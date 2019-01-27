@@ -1,20 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Route,Redirect, Link } from "react-router-dom";
-import CameraPage from './components/camera.js'
-import home from './components/home.js'
+import React, { Component } from 'react';
+import './App.css';
+import { Router,} from 'react-router-dom';
+import history from './history';
+import StateContainer from './Container/StateContainer.js';
 
-function App() {
-  return (
-    <Router>
-      <div>
-        
-
-        <hr />
-        <Route path="/" render={ () => <Redirect to="/home" />}/>
-        <Route path="/home" render={ () => <home/> } />
-        <Route path="/CameraPage" render={ () => <Camera/>} />
-      </div>
-    </Router>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router history={history}>
+        <StateContainer />
+      </Router>
+    );
+  }
 }
+
 export default App;

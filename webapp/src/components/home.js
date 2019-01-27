@@ -1,7 +1,8 @@
 import React from 'react';
 import StarryNight from './star_night_sky.jpg';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import history from '../history.js'
+import history from '../history.js';
+import CameraPage from './CameraPage.js'
 class Home extends React.Component {
 
     constructor(props) {
@@ -17,7 +18,8 @@ class Home extends React.Component {
           <div style={style.Headings}>
           <ul>
           <p>
-          <a onClick={()=>{let path='/CameraPage'; 
+          <a style={style.Headings} 
+          onClick={()=>{let path='/camerapage'; 
                           history.push(path);
                         }}>Facial Detection</a>
           </p>
