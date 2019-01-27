@@ -22,6 +22,8 @@ class Main extends React.Component {
           <Route path="/camerapage" render={ () => <CameraPage/> } />
           <Route path="/recommendation" render={ () => <Recommendation/> } />
           {/* <Route path="/confirm" render={ () => <Confirm/> } /> */}
+          <Route path="/microphonepage" render={ () => <MicrophonePage/> } />
+
         </div>
       </main>
     )
