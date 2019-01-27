@@ -30,7 +30,7 @@ class CameraPage extends Component {
         this.setState({ photoTaken: true });
         if (userId) {
           this.setState({ user: userId });
-          history.push('/recommandation');
+          history.push('/recommendation');
           this.props.getUser(userId);
         }
       });
@@ -41,7 +41,7 @@ class CameraPage extends Component {
       return (
         <div>
           <h1>Cannot find your face in database. Continue as new user, or retry.</h1>
-          <button onClick={()=>{history.push('/recommandation'); console.log ("camera on click");this.props.getUser(null);} }>Continue</button>
+          <button onClick={()=>{history.push('/recommendation'); console.log ("camera on click");this.props.getUser(null);} }>Continue</button>
           <button onClick={()=>{this.setState({photoTaken:false})}}>Retry</button>
         </div>
       )
