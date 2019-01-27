@@ -18,12 +18,14 @@ app.listen(port, (err) => {
 
 const sqltest = require('./sqltest');
 app.get('/menu', (request, response) => {
-  // pool.query('SELECT * FROM menu', (error, result) => {
-  //     if (error) throw error;
-
-  //     response.send(result);
-  // });
   sqltest((err, columns) => {
     response.send(columns);
   })
 });
+
+app.get('/menu', (request, response) => {
+  sqltest((err, columns) => {
+    response.send(columns);
+  })
+});
+

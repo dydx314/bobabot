@@ -25,7 +25,7 @@ connection.on('connect', function(err)
         else
         {
             //createTables()
-
+            //createCustIdTable()
             //insertMenu("'tea'", "'gg'")
 
             //callgm()
@@ -38,7 +38,7 @@ function insertMenu(itemName, img)
     console.log('Inserting boba item...');
 
     var request = new Request(
-        "INSERT INTO menu(ITEM_NAME, IMAGE, ORDER_COUNT) "
+        "INSERT INTO menu(ITEM_NAME, IMAGE_URL, ORDER_COUNT) "
         + "VALUES (" + itemName + ", " + img + ", 0)"
         , function (err, rowCount, rows)
         {
@@ -54,7 +54,6 @@ function insertMenu(itemName, img)
         });
     });
     connection.execSql(request);
-
 }
 
 function dropTables(tableName)
@@ -79,15 +78,40 @@ function dropTables(tableName)
     connection.execSql(request);
 }
 
-function createTables()
+function createMenuTable()
 {
     console.log('Creating table for boba...');
 
     var request = new Request(
         "CREATE TABLE menu( "
         + "ITEM_NAME varchar(20), "
-        + "IMAGE varchar(20), "
+        + "IMAGE_URL VARCHAR(2083), "
         + "ORDER_COUNT int)",
+        function(err, rowCount, rows)
+        {
+            console.log(err);
+            console.log(rowCount + ' row(s) returned');
+            process.exit();
+        }
+    );
+
+    request.on('row', function(columns) {
+        columns.forEach(function(column) {
+            console.log("%s\t%s", column.metadata.colName, column.value);
+        });
+    });
+    connection.execSql(request);
+}
+
+function createCustIdTable()
+{
+    console.log('Creating table for boba...');
+
+    var request = new Request(
+        "CREATE TABLE custid( "
+        + "FACE_ID varchar(20), "
+        + "VOICE_ID varchar(20), "
+        + "NAME varchar(20))",
         function(err, rowCount, rows)
         {
             console.log(err);

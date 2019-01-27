@@ -1,2 +1,4 @@
 # dependencies
 webapp/node_modules
+node_modules
+sqltest/node_modules
