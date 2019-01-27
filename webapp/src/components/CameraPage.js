@@ -6,6 +6,7 @@ class CameraPage extends Component {
   constructor(props) {
     super(props);
     this.takePicture = this.takePicture.bind(this);
+    this.handleCamera = props.handleCamera;
   }
 
   takePicture() {
@@ -13,13 +14,23 @@ class CameraPage extends Component {
       .then(blob => {
         this.img.src = URL.createObjectURL(blob);
         this.img.onload = () => { URL.revokeObjectURL(this.src); }
-      })
+      }).then(()=>{
+        // this.handleCamera(this.img);
+      });
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
+          <button onClick={this.takePicture}>Detect</button>
+          <img
+            alt="camera picture"
+            style={style.captureImage}
+            ref={(img) => {
+              this.img = img;
+            }}
+          />
           <Camera
             style={style.preview}
             ref={(cam) => {
@@ -27,13 +38,6 @@ class CameraPage extends Component {
             }}
           >
           </Camera>
-          <button onClick={this.takePicture}>Detect</button>
-          <img
-            style={style.captureImage}
-            ref={(img) => {
-              this.img = img;
-            }}
-          />
         </header>
       </div>
     );
