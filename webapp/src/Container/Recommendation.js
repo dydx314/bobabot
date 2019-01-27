@@ -10,10 +10,11 @@ class Recommendation extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log("user", this.props.user);
         this.state = {
             // user: props.user,
             renderConfirm:false,
-            user: null
+            user: this.props.user
         };
 
     }
@@ -34,12 +35,14 @@ class Recommendation extends React.Component {
         const user = this.state.user;
         //const user = null;
         let panel;
+        console.log("recommendation line 37");
         if (this.state.renderConfirm) {
             panel =  <Confirm user={user} />;
            
         } else if (user) {
             panel = <GreetingOld user={user} onButtonPressed = {this.handleButtonPress} />;
         } else {
+            console.log("im at the registration page");
             panel = <GreetingNew onButtonPressed = {this.handleButtonPress} generateNewUser = {this.createNewUser}/>;
         }
     

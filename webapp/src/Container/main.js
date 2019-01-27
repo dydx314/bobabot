@@ -10,9 +10,22 @@ import MicrophonePage from '../Components/MicrophonePage.js';
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user:null,
+  };
 
    
 }
+updateUser = (u) => {
+
+  console.log("main line 22");
+
+  this.setState({
+      user: u,
+  });
+
+}
+
 
   render() {
     return(
@@ -20,8 +33,8 @@ class Main extends React.Component {
         <div >
           <Route exact path="/" render={ () => <Redirect to="/home" />} />
           <Route path="/home" render={ () => <Home/> } />
-          <Route path="/camerapage" render={ () => <CameraPage/> } />
-          <Route path="/recommendation" render={ () => <Recommendation/> } />
+          <Route path="/camerapage" render={ () => <CameraPage getUser = {this.updateUser}/> } />
+          <Route path="/recommendation" render={ () => <Recommendation user={this.state.user}/> } />
           {/* <Route path="/confirm" render={ () => <Confirm/> } /> */}
           <Route path="/microphonepage" render={ () => <MicrophonePage/> } />
 
