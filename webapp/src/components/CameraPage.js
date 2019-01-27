@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Camera from 'react-camera';
 
-class FaceDetection extends Component {
+class CameraPage extends Component {
 
   constructor(props) {
     super(props);
@@ -26,16 +26,14 @@ class FaceDetection extends Component {
               this.camera = cam;
             }}
           >
-            <div onClick={this.takePicture}>
-              <div style={style.captureButton} />
-            </div>
           </Camera>
+          <button onClick={this.takePicture}>Detect</button>
           <img
-          style={style.captureImage}
-          ref={(img) => {
-            this.img = img;
-          }}
-        />
+            style={style.captureImage}
+            ref={(img) => {
+              this.img = img;
+            }}
+          />
         </header>
       </div>
     );
@@ -54,17 +52,9 @@ const style = {
     bottom: 0,
     width: '100%'
   },
-  captureButton: {
-    backgroundColor: '#fff',
-    borderRadius: '50%',
-    height: 56,
-    width: 56,
-    color: '#000',
-    margin: 20
-  },
   captureImage: {
     width: '100%',
   }
 };
 
-export default FaceDetection;
+export default CameraPage;
