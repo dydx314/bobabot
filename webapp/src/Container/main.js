@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route,Redirect, Link } from "react-router-dom"
 import CameraPage from '../Components/CameraPage.js';
 import Home from '../Components/home.js';
 import Recommendation from './Recommendation.js';
+import MicrophonePage from '../Components/MicrophonePage.js';
 // import Confirm from '../Components/confirm.js';
 // 
 
