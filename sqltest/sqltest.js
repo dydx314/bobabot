@@ -152,13 +152,36 @@ function getMenu(next)
     connection.execSql(request);
 }
 
-module.exports = function callgm(next) {
-    getMenu(next);
-};
-// async function callgm() {
-//     a = await getMenu();
-//     console.log("got here");
-//     a.forEach(function(column) {
-//         console.log("%s\t%s", column.metadata.colName, column.value);
-//     });
-// }
+function placeOrder(next)
+{
+    console.log('Placing order...');
+
+    // Read all rows from table
+    // TODO: NOT DONE
+    var request = new Request(
+        "SELECT * FROM menu",
+        function(err, rowCount, rows)
+        {
+            console.log(rowCount + ' row(s) returned');
+            // process.exit();
+        }
+    );
+
+    request.on('row', function (columns) {
+
+        columns.forEach(function(column) {
+            console.log("%s\t%s", column.metadata.colName, column.value);
+        });
+        next(null, columns);
+    });
+    connection.execSql(request);
+}
+
+module.exports = {
+    getMenu: function(next) {
+        getMenu(next);
+    },
+    placeOrder: function(next) {
+        placeOrder(next);
+    }
+}

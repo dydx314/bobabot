@@ -18,13 +18,7 @@ app.listen(port, (err) => {
 
 const sqltest = require('./sqltest');
 app.get('/menu', (request, response) => {
-  sqltest((err, columns) => {
-    response.send(columns);
-  })
-});
-
-app.get('/menu', (request, response) => {
-  sqltest((err, columns) => {
+  sqltest.getMenu((err, columns) => {
     response.send(columns);
   })
 });
