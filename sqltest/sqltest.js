@@ -12,7 +12,7 @@ var config =
         database: 'bobabot', //update me
         encrypt: true
     }
-}
+};
 var connection = new Connection(config);
 
 // Attempt to connect and execute queries if connection goes through
